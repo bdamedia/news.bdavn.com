@@ -1,5 +1,5 @@
 # folders and files
-#/vendor
+/vendor
 /bin
 /runtime
 /luya
@@ -8,6 +8,8 @@ composer.phar
 .env
 /docker/.env
 /.env
+/public_html/assets
+/public_html/storage
 
 # project config
 /configs/env-local-db.php
