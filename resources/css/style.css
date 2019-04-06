@@ -227,3 +227,35 @@ ul.menu-top li{
         width: 90%;
     }
 }
+
+ul.social-share{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.social-share li{
+    display: inline-block;
+    margin-right: 7px;
+    font-size: 40px;
+}
+
+ul.social-share li a.facebook{
+    color: #516eab;
+}
+
+ul.social-share li a.twitter{
+    color: #29c5f6;
+}
+
+ul.social-share li a.linkedin{
+    color: #00A0DC;
+}
+
+ul.social-share li a.pinterest{
+    color: #ca212a;
+}
+
+ul.social-share li a.whatsapp{
+    color: #4FCE5D;
+}

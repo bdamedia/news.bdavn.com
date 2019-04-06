@@ -2,8 +2,8 @@
 use luya\lazyload\LazyLoad;
 use app\modules\news\models\Ads;
 
+$this->registerCssFile('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
 $articles = $provider->models;
-
 $ads = Ads::getAds([Ads::POS_SIDEBAR, Ads::POS_INNER_NEWS]);
 ?>
 
@@ -16,6 +16,13 @@ $ads = Ads::getAds([Ads::POS_SIDEBAR, Ads::POS_INNER_NEWS]);
             <p class="datetime"><small>By <strong><?= $article->getAuthor(); ?></strong> 
                 <?= $article->getFormatedDate()?>
             </small></p>
+            <?= \ymaker\social\share\widgets\SocialShare::widget([
+                'configurator'  => 'socialShare',
+                'url'           => (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]",
+                'title'         => $article->title,
+                'description'   => $article->title,
+                'imageUrl'      => $article->getImage()->source,
+            ]); ?>
             <p class="text-center">
                 <?= LazyLoad::widget(['src' => $article->getImage()->source, 'extraClass' => 'img-responsive'])?>
             </p>

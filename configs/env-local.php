@@ -126,7 +126,44 @@ $config = [
             // 'httpPath' => '',
             // 'absoluteHttpPath' => '',
             // 'serverPath' => '',
-        ]
+        ],
+        'socialShare' => [
+            'class' => \ymaker\social\share\configurators\Configurator::class,
+            'enableIcons' => true,
+            'socialNetworks' => [
+                'facebook' => [
+                    'class' => \ymaker\social\share\drivers\Facebook::class,
+                    'options' => ['class' => 'facebook']
+                ],
+                'twitter' => [
+                    'class' => \ymaker\social\share\drivers\Twitter::class,
+                    'options' => ['class' => 'twitter']
+                ],
+                // 'Gmail' => [
+                //     'class' => \ymaker\social\share\drivers\Gmail::class,
+                // ],
+                'linkedIn' => [
+                    'class' => \ymaker\social\share\drivers\LinkedIn::class,
+                    'options' => ['class' => 'linkedin']
+                ],
+                'pinterest' => [
+                    'class' => \ymaker\social\share\drivers\Pinterest::class,
+                    'options' => ['class' => 'pinterest']
+                ],
+                'whatsApp' => [
+                    'class' => \ymaker\social\share\drivers\WhatsApp::class,
+                    'options' => ['class' => 'whatsapp']
+                ],
+            ],
+            'icons' => [
+                \ymaker\social\share\drivers\Twitter::class => 'fab fa-twitter-square', // CSS class
+                \ymaker\social\share\drivers\Facebook::class => 'fab fa-facebook-square',  // CSS class
+                //\ymaker\social\share\drivers\Gmail::class => 'fab google-plus-square',  // CSS class
+                \ymaker\social\share\drivers\LinkedIn::class => 'fab fa-linkedin-square',  // CSS class
+                \ymaker\social\share\drivers\Pinterest::class => 'fab fa-pinterest-square',  // CSS class
+                \ymaker\social\share\drivers\WhatsApp::class => 'fab fa-whatsapp-square',  // CSS class
+            ],
+        ],
     ],
     'params' => $params,
     'tags' => [

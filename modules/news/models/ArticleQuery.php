@@ -78,7 +78,7 @@ class ArticleQuery extends \yii\db\ActiveRecord
         $storagePath = Yii::$app->storage->folderName;
 
         if($this->image_name)
-            $image->source = \yii\helpers\Url::base().'/'.Yii::$app->storage->folderName.'/'.$this->image_name; 
+            $image->source = \yii\helpers\Url::base(true).'/'.Yii::$app->storage->folderName.'/'.$this->image_name; 
 
     	return $image;
     }
