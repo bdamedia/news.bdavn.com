@@ -1,0 +1,52 @@
+{
+    "name": "luyadev/luya-kickstarter",
+    "description": "The kickstarter project for a new LUYA application.",
+    "type": "luya-kickstarter",
+    "license":"MIT",
+    "require": {
+        "luyadev/luya-core" : "~1.0.0",
+        "luyadev/luya-module-admin" : "~1.2.0",
+        "luyadev/luya-module-cms" : "~1.0.0",
+        "luyadev/luya-bootstrap3" : "~1.0.0",
+        "luyadev/luya-generic" : "~1.0.0",
+        "bower-asset/angular-ui-tinymce": "~0.0.18",
+        "linslin/yii2-curl": "*",
+        "jaeger/querylist": "^4.1",
+        "yiimaker/yii2-social-share": "^2.3"
+    },
+    "require-dev": {
+        "yiisoft/yii2-gii" : "~2.0.0",
+        "yiisoft/yii2-debug" : "~2.0.0",
+        "luyadev/luya-testsuite" : "~1.0.0"
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "yii\\composer\\Installer::postCreateProject"
+        ]
+    },
+    "extra": {
+        "yii\\composer\\Installer::postCreateProject": {
+            "setPermission": [
+                {
+                    "public_html/assets": "0777",
+                    "public_html/storage": "0777",
+                    "runtime" : "0777"
+                }
+            ]
+		},
+        "asset-installer-paths": {
+            "bower-asset-library": "vendor/bower"
+        },
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
+    "config": {
+        "fxp-asset" : {
+            "pattern-skip-version": "(-build|-patch)",
+             "installer-paths": {
+                "bower-asset-library": "vendor/bower"
+            }
+        }
+    }
+}
