@@ -19,7 +19,7 @@ class ResourcesAsset extends \luya\web\Asset
     public $js = [
         '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
         'js/main.js',
-        'js/masonry.pkgd.min.js'
+        //'js/masonry.pkgd.min.js'
     ];
     
     public $publishOptions = [

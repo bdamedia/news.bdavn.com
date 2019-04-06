@@ -25,7 +25,7 @@ $ads = Ads::getAds([Ads::POS_TOP, Ads::POS_BOTTOM]);
         <meta http-equiv="keywords" content="news, tin tức" />
         <meta http-equiv="copyright" content="bdavn" />
 
-        <title><?= $this->title; ?></title>
+        <title><?= $this->title?$this->title:'BDAVN' ?></title>
         <script>document.base_url = '<?= Url::base()?>'</script>
         <link rel="manifest" href="<?= Url::base()?>/manifest.json">
 

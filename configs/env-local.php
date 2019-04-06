@@ -88,10 +88,10 @@ $config = [
          * hidden: (boolean) If this website is not multi lingual you can hide the composition, other whise you have to enable this.
          * default: (array) Contains the default setup for the current language, this must match your language system configuration.
          */
-        'composition' => [
-            'hidden' => true, // no languages in your url (most case for pages which are not multi lingual)
-            'default' => ['langShortCode' => 'en'], // the default language for the composition should match your default language shortCode in the language table.
-        ],
+        // 'composition' => [
+        //     'hidden' => true, // no languages in your url (most case for pages which are not multi lingual)
+        //     'default' => ['langShortCode' => 'en'], // the default language for the composition should match your default language shortCode in the language table.
+        // ],
         /*
          * If cache is enabled LUYA will cache cms blocks and speed up the system in different ways. In the prep config
          * we use the DummyCache to imitate the caching behavior, but actually nothing gets cached. In production you should
@@ -132,6 +132,14 @@ $config = [
     'tags' => [
         'tooltip' => ['class' => 'app\tags\TooltipTag'],
     ],
+    'on beforeRequest' => function ($event) {
+        $event->sender->response->on(yii\web\Response::EVENT_BEFORE_SEND, function($e){
+            ob_start("ob_gzhandler");
+        });
+        $event->sender->response->on(yii\web\Response::EVENT_AFTER_SEND, function($e){
+            ob_end_flush();
+        });
+    },
 ];
 
 //*
