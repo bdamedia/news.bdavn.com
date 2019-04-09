@@ -35,6 +35,10 @@ class Utils extends yii\base\Component
         $filename = explode('?', $filename);
         $filename = $filename[0];
 
+        if(strpos(basename($imageUrl), 'f=jpg') !== false){
+            $filename = str_replace('.img', '.jpg', $filename);
+        }
+
         $desFile = $uploadsDir.'/'.$filename;
         
         if(file_exists($desFile))

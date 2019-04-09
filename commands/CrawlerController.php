@@ -137,13 +137,25 @@ class CrawlerController extends Controller
         parent::init();
 	}
     
-    public function actionMsnEn(){
+    public function actionMsnEn($start = null, $end = null){
         $webUrl = 'https://www.msn.com/en-us/';
 
         $linksMap = self::$linksMap['msn/en'];
+        $totalLinks = count($linksMap);
 
-        $idx = 1;
+        if($start === null)
+            $start = 0;
+
+        if($end === null)
+            $end = $totalLinks;
+
+        $idx = 0;
 		foreach ($linksMap as $artLink => $catSLugs) {
+            if($idx < $start || $idx > $end){
+                $idx++;
+                continue;
+            }
+
             $categoryIds = static::getCatIds($catSLugs);
             $catName = implode(", ", $catSLugs);
 
@@ -1101,8 +1113,31 @@ class CrawlerController extends Controller
         return $author->id;
     }
 
-    public function actionMsnEnApi($limit = 100){
-        $apis = CrawlerData::find()->orderBy(['id' => SORT_ASC])->all();
+
+    /*
+     * Command:
+     * yii msn-en-api 100 asc|desc n|n%
+     * Eg: yii msn-en-api 20 desc 50%
+     */
+    public function actionMsnEnApi($limit = 100, $sort = 'asc', $numberOfLink = null){
+        $totalLinks = $apis = CrawlerData::find()->count();
+        $apis = CrawlerData::find()->orderBy(['id' => $sort == 'desc'?SORT_DESC:SORT_ASC]);
+        
+        $queryLimit = $totalLinks;
+        if($numberOfLink !== null && $numberOfLink){
+            if(strpos($numberOfLink, '%') !== false){
+                $limitPercent = (int)$numberOfLink;
+                $queryLimit = floor(($limitPercent * $totalLinks)/100);
+            }else{
+                $queryLimit = (int)$numberOfLink;
+            }
+
+            if($queryLimit <= 0)
+                $queryLimit = $totalLinks;
+        }
+
+        $apis->limit($queryLimit);
+        $apis = $apis->all();
 
         foreach($apis as $api){
             echo " Getting api {$api->api_url} {$api['categories']}\n";
