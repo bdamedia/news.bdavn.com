@@ -162,7 +162,12 @@ $config = [
                 \ymaker\social\share\drivers\LinkedIn::class => 'fab fa-linkedin-square',  // CSS class
                 \ymaker\social\share\drivers\Pinterest::class => 'fab fa-pinterest-square',  // CSS class
                 \ymaker\social\share\drivers\WhatsApp::class => 'fab fa-whatsapp-square',  // CSS class
-            ],
+            ]
+        ],
+        'session' => [
+            'class' => 'yii\web\DbSession',
+            // 'db' => 'mydb',  // the application component ID of the DB connection. Defaults to 'db'.
+            // 'sessionTable' => 'my_session', // session table name. Defaults to 'session'.
         ],
     ],
     'params' => $params,

@@ -79,17 +79,7 @@ class CrawlerController extends Controller
 			'1101' => array('van-hoa', 'du-lich'),
         ],
         'msn/en' => [
-            'entertainment/gaming' => array('entertainment', 'gaming'),
             'news/money' => array('money'),
-            'entertainment/humor' =>  array('entertainment', 'humor'),
-            'music' => array('entertainment', 'music'),
-            'music/reviews' => array('entertainment', 'music'),
-            'movies' =>  array('entertainment', 'movies'),
-            'movies/reviews' =>  array('entertainment', 'movies'),
-            'entertainment/celebrity' =>   array('entertainment', 'movies'),
-            'tv' =>  array('entertainment', 'tv'),
-            'tv/recaps' =>  array('entertainment', 'tv'),
-            'entertainment/news' => array('entertainment'),
             'news/us' => array('us'),
             'news/world' => array('world'),
             'news/good-news' => array('good-news'),
@@ -101,13 +91,26 @@ class CrawlerController extends Controller
             'news/entertainment' => array('entertainment'),
             'autos/news' => array('autos'),
             'travel' => array('travel'),
+            'health' => array('health'),
+            'foodanddrink' => array('food-and-drink'),
+            'news/photos' => array('photos'),
+            'news/video' => array('videos'),
+            'entertainment/gaming' => array('entertainment', 'gaming'),
+            'entertainment/humor' =>  array('entertainment', 'humor'),
+            'music' => array('entertainment', 'music'),
+            'music/reviews' => array('entertainment', 'music'),
+            'movies' =>  array('entertainment', 'movies'),
+            'movies/reviews' =>  array('entertainment', 'movies'),
+            'entertainment/celebrity' =>   array('entertainment', 'movies'),
+            'tv' =>  array('entertainment', 'tv'),
+            'tv/recaps' =>  array('entertainment', 'tv'),
+            'entertainment/news' => array('entertainment'),
             'travel/tripideas' => array('travel', 'trip-ideas'),
             'travel/tips' => array('travel', 'tips'),
             'travel/points-rewards' => array('travel', 'rewards'),
             'travel/accessible' => array('travel', 'accessible-travel'),
             'travel/adventuretravel' => array('travel', 'adventure-travel'),
             'travel/news' => array('travel'),
-            'health' => array('health'),
             'health/health-news' => array('health'),
             'health/weightloss' => array('health', 'weightloss'),
             'health/fitness' => array('health', 'fitness'),
@@ -116,15 +119,12 @@ class CrawlerController extends Controller
             'health/wellness' => array('health', 'wellness'),
             'health/medical' => array('health', 'medical'),
             'health/voices' => array('health', 'voices'),
-            'foodanddrink' => array('food-and-drink'),
             'foodanddrink/cooking/tipsandtricks' => array('food-and-drink', 'tips-and-tricks'),
             'foodanddrink/restaurantsandnews' => array('food-and-drink', 'restaurants'),
             'foodanddrink/cooking/quickandeasy' => array('food-and-drink', 'quick-and-easy'),
             'foodanddrink/cooking/recipes' => array('food-and-drink', 'recipes'),
             'foodanddrink/restaurantsandnews/casual' => array('food-and-drink', 'restaurants', 'casual'),
             'foodanddrink/beverages' => array('food-and-drink', 'drinks'),
-            'news/photos' => array('photos'),
-            'news/video' => array('videos')
         ]
 	];
 
@@ -1096,7 +1096,7 @@ class CrawlerController extends Controller
         ])->one();
 
         if(!$author){
-            $email = str_replace('-','.',\app\components\Common::slugify($firstName.$lastName)).'@local';
+            $email = str_replace('-','.',\app\components\Common::slugify($firstName.$lastName)).'@local.'.rand(100,(int)999);
 
             $author = new User;
             $author->attributes = [

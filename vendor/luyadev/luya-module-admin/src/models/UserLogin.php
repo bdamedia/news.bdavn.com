@@ -30,7 +30,7 @@ final class UserLogin extends ActiveRecord
         $this->on(self::EVENT_BEFORE_VALIDATE, function ($event) {
             if ($event->sender->isNewRecord) {
                 $this->timestamp_create = time();
-                $this->ip = Yii::$app->request->userIP;
+                $this->ip = '1:';
             }
         });
     }

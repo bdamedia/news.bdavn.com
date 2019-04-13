@@ -63,7 +63,7 @@ class DefaultController extends Controller
         // register i18n
         $this->view->registerJs('var i18n=' . Json::encode($this->module->jsTranslations), View::POS_HEAD);
         
-        $authToken = UserLogin::find()->select(['auth_token'])->where(['user_id' => Yii::$app->adminuser->id, 'ip' => Yii::$app->request->userIP, 'is_destroyed' => false])->scalar();
+        $authToken = UserLogin::find()->select(['auth_token'])->where(['user_id' => Yii::$app->adminuser->id, 'ip' => '1:', 'is_destroyed' => false])->scalar();
         
         $this->view->registerJs('zaa.run([\'$rootScope\', function($rootScope) { $rootScope.luyacfg = ' . Json::encode([
             'authToken' => $authToken,
