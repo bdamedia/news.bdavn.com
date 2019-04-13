@@ -10,12 +10,8 @@ $spinner = Svg::widget([
 
 ?>
 <div class="login-frame">
-    <div class="login-logo">
-        <?= Svg::widget([
-            'folder' => "@admin/resources/svg",
-            'cssClass' => 'login-logo-svg',
-            'file' => 'logo/luya_logo.svg'
-        ]) ?>
+    <div class="login-logo text-center">
+        
     </div>
     <!-- normal login form -->
     <form class="login-form" method="post" id="loginForm">
@@ -71,7 +67,7 @@ $spinner = Svg::widget([
 <div class="login-links">
     <ul>
         <li>
-            <a href="https://twitter.com/luyadev" target="_blank" class="login-link">@luyadev</a>
+            <a href="#" target="_blank" class="login-link"></a>
         </li>
     </ul>
 </div>
